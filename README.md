@@ -18,11 +18,10 @@ This is a responsive stock trading web app built using **React** and **Tailwind 
 - 🌙 **Dark/Light Mode Toggle**
     - Toggle available in the top navigation
     - Applies theme globally across all routes
-    - Fixed issues with dark mode (headings, hover states, etc.)
 
 - 📈 **Top Gainers / Top Losers Section**
     - Displayed on the homepage
-    - Fully responsive on **iPad** and **tablet** screen sizes
+    - Fully responsive 
 
 - 🖼️ **Image Optimization**
     - All images are optimized for fast loading and better performance
