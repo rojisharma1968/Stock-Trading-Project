@@ -63,12 +63,6 @@ This is a responsive stock trading web app built using **React** and **Tailwind 
 
 ---
 
-## 📷 Screenshots
-
-_Add some screenshots here once the UI is ready._
-
----
-
 ## 📦 Folder Structure
 
 ```
