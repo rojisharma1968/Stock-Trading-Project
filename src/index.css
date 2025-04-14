@@ -1,0 +1,229 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 40% 98%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 222 47% 11%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 199 89% 48%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 210 40% 96%;
+    --accent-foreground: 222 47% 11%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 222 84% 5%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 225 9% 9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222 47% 11%;
+
+    --secondary: 199 89% 48%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 217 33% 17%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 215 28% 17%;
+    --input: 215 28% 17%;
+    --ring: 210 40% 98%;
+
+    /* Adding hover-specific variables for dark mode */
+    --hover-background: 217 33% 20%;
+    --hover-text: 210 40% 98%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  /* Improve dark mode transitions */
+  :root {
+    --transition-duration: 0.3s;
+  }
+
+  html {
+    @apply transition-colors duration-300;
+  }
+
+  /* Better focus styles for dark mode */
+  .dark *:focus-visible {
+    @apply outline-secondary outline-offset-2;
+  }
+
+  /* Dark mode friendly card hover */
+  .dark .card:hover {
+    @apply bg-accent/50;
+  }
+
+  /* Improved dark mode table row hover */
+  .dark tr:hover td {
+    @apply bg-accent/70 text-foreground;
+  }
+
+  /* Dark mode friendly inputs */
+  .dark input, 
+  .dark textarea, 
+  .dark select {
+    @apply bg-muted border-input text-foreground;
+  }
+
+  /* Stock market theme specific classes */
+  .stock-price-up {
+    @apply text-stock-gain font-semibold;
+  }
+
+  .stock-price-down {
+    @apply text-stock-loss font-semibold;
+  }
+
+  .chart-card {
+    @apply bg-card rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow;
+  }
+  
+  /* Loading skeletons - improved for dark mode */
+  .skeleton {
+    @apply animate-pulse bg-gray-200 rounded dark:bg-gray-700;
+  }
+
+  /* Headings in dark mode */
+  .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+    @apply text-foreground;
+  }
+  
+  /* Links in dark mode */
+  .dark a:not([class]) {
+    @apply text-secondary hover:text-secondary/80;
+  }
+  
+  /* Button hover states in dark mode */
+  .dark button:hover:not([disabled]) {
+    @apply bg-opacity-90;
+  }
+
+  /* Image optimization - prevent layout shifts */
+  img {
+    @apply max-w-full h-auto;
+  }
+  
+  /* Optimize images with lazy loading */
+  img:not([loading]) {
+    @apply transition-opacity duration-300 ease-in-out;
+  }
+}
+
+/* Fix for some recharts components in dark mode */
+.dark .recharts-cartesian-grid line,
+.dark .recharts-cartesian-axis-line {
+  @apply stroke-border;
+}
+
+.dark .recharts-text {
+  @apply fill-foreground;
+}
+
+.dark .recharts-tooltip-wrapper .recharts-default-tooltip {
+  @apply bg-card text-card-foreground border-border;
+}
+
+/* Fixed hover styles for dark mode tables */
+.dark .hover\:bg-muted:hover {
+  @apply bg-accent/70 text-white;
+}
+
+.dark tbody tr:hover {
+  @apply bg-accent/70;
+}
+
+.dark tbody tr:hover td {
+  @apply text-white;
+}
+
+/* Animation for page transitions */
+.page-transition-enter {
+  @apply opacity-0;
+}
+
+.page-transition-enter-active {
+  @apply opacity-100 transition-opacity duration-300;
+}
+
+.page-transition-exit {
+  @apply opacity-100;
+}
+
+.page-transition-exit-active {
+  @apply opacity-0 transition-opacity duration-300;
+}
+
+/* Image optimization classes */
+.optimized-image {
+  @apply w-full h-full object-cover transition-opacity duration-300;
+}
+
+.image-loading {
+  @apply opacity-0;
+}
+
+.image-loaded {
+  @apply opacity-100;
+}
+
+/* Responsive fixes for the Top Gainers/Losers section (steal section) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .grid-cols-1.md\:grid-cols-2.gap-8 > section {
+    @apply w-full max-w-none;
+  }
+  
+  .grid-cols-1.md\:grid-cols-2.gap-8 > section .grid-cols-1.sm\:grid-cols-2.lg\:grid-cols-1.gap-4 {
+    @apply grid-cols-2;
+  }
+}
+
+/* Make StockCard more responsive for all screen sizes */
+.grid-cols-1.sm\:grid-cols-2.lg\:grid-cols-1.gap-4 .truncate.max-w-\[150px\] {
+  @apply max-w-full;
+}
