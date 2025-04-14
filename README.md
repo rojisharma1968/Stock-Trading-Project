@@ -42,7 +42,7 @@ This is a responsive stock trading web app built using **React** and **Tailwind 
 
 1. Clone the repo:
      ```bash
-     git clone https://github.com/your-username/stock-trading-app.git
+     https://github.com/rojisharma1968/Stock-Trading-Project.git
      cd stock-trading-app
      ```
 
